@@ -9,11 +9,14 @@ public class HealthBarDrawer : MonoBehaviour
     [SerializeField] private Slider _healthBar;
     [SerializeField] private Player _player;
 
+    private void Start()
+    {
+        _healthBar.maxValue = _player.MaxHealth;
+    }
+
     public void Draw()
     {
         StartCoroutine(ChangeHealthBarValue());
-
-        Debug.Log(_player.Health);
     }
 
     private IEnumerator ChangeHealthBarValue()

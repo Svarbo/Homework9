@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private float _health;
 
     public float Health => _health;
+    public float MaxHealth => _maxHealth;
 
     private void Start()
     {
