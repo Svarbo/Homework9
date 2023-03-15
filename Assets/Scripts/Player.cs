@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _healValue;
-    [SerializeField] private UnityEvent _onHealthChanged;
+    [SerializeField] private UnityEvent _healthChanged;
 
     private float _health;
 
@@ -16,21 +16,21 @@ public class Player : MonoBehaviour
     {
         _health = Mathf.Clamp(_maxHealth, 0, _maxHealth);
 
-        _onHealthChanged.Invoke();
+        _healthChanged.Invoke();
     }
 
     public void GetDamage(float damage)
     {
         _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
 
-        _onHealthChanged.Invoke();
+        _healthChanged.Invoke();
     }
 
     public void Heal()
     {
         _health = Mathf.Clamp(_health + _healValue, 0, _maxHealth);
 
-        _onHealthChanged.Invoke();
+        _healthChanged.Invoke();
     }
 }
 

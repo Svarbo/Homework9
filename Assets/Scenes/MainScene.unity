@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _healValue: 10
-  _onHealthChanged:
+  _healthChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1258711562}
