@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : MonoBehaviour
+public class OldPlayerScript : MonoBehaviour
 {
     [SerializeField] private float _maxHealth;
     [SerializeField] private float _healValue;
@@ -13,23 +13,28 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        _health = Mathf.Clamp(_maxHealth, 0, _maxHealth);
+        _health = _maxHealth;
 
         _onHealthChanged.Invoke();
     }
 
     public void GetDamage(float damage)
     {
-        _health = Mathf.Clamp(_health - damage, 0, _maxHealth);
+        if (_health != 0)
+        {
+            _health -= damage;
 
-        _onHealthChanged.Invoke();
+            _onHealthChanged.Invoke();
+        }
     }
 
     public void Heal()
     {
-        _health = Mathf.Clamp(_health + _healValue, 0, _maxHealth);
+        if (_health != _maxHealth)
+        {
+            _health += _healValue;
 
-        _onHealthChanged.Invoke();
+            _onHealthChanged.Invoke();
+        }
     }
 }
-
